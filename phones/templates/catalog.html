@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Каталог телефонов</title>
+</head>
+<body>
+    <h1>Каталог телефонов</h1>
+
+    <div>
+        <a href="?sort=name">По имени</a>
+        <a href="?sort=min_price">Сначала дешёвые</a>
+        <a href="?sort=max_price">Сначала дорогие</a>
+    </div>
+
+    {% for phone in phones %}
+        <div>
+            <a href="{% url 'phone_detail' phone.slug %}">
+                <h3>{{ phone.name }}</h3>
+            </a>
+            <p>Цена: {{ phone.price }}</p>
+            <img src="{{ phone.image }}" width="100">
+        </div>
+    {% endfor %}
+</body>
+</html>
